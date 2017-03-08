@@ -3,7 +3,7 @@
 run_kafka() {
     if [ -z $KAFKA_ID ]; then
         echo "no KAFKA_ID found. Getting from hostname"
-        [[ `hostname` =~ -([0-9]+)$ ]] || echo "Unable to get KAFKA_ID from hostname!"; exit 1
+        [[ ! `hostname` =~ -([0-9]+)$ ]] && echo "Unable to get KAFKA_ID from hostname!" && exit 1
         ordinal=${BASH_REMATCH[1]}
         
         KAFKA_ID=$((1 + $ordinal))
