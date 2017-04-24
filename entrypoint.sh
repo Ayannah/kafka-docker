@@ -9,7 +9,7 @@ run_kafka() {
         KAFKA_ID=$((1 + $ordinal))
     fi
 
-    cp -f /etc/kafka/server.properties /opt/kafka/config/server.properties
+    cp -f /etc/kafka/* /opt/kafka/config/
     echo "broker.id=$KAFKA_ID" >> /opt/kafka/config/server.properties
     echo "zookeeper.connect=$ZK_CONNECT" >> /opt/kafka/config/server.properties
     echo "log.dirs=/var/lib/kafka" >> /opt/kafka/config/server.properties
